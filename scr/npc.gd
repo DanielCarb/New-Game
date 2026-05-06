@@ -24,7 +24,7 @@ func _on_timer_timeout() -> void:
 	nav_agent.target_position = random_target
 	state = State.WALKING
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if state == State.WALKING:
 		if nav_agent.is_navigation_finished():
 			# Reached the target — go idle and start the rest timer

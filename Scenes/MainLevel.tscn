@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cdtts8ly4tuvj"]
 
 [ext_resource type="PackedScene" uid="uid://c643s5glonng8" path="res://Scenes/Player.tscn" id="1_8vsrk"]
-[ext_resource type="Script" uid="uid://dynjjevc507k1" path="res://Scenes/main_level.gd" id="1_o15vh"]
+[ext_resource type="Script" uid="uid://dynjjevc507k1" path="res://scr/main_level.gd" id="1_o15vh"]
 [ext_resource type="Texture2D" uid="uid://xb5n4088hw6r" path="res://Assets/icon.svg" id="2_c77c4"]
-[ext_resource type="Script" uid="uid://xwmekpoehgl" path="res://Scenes/sprite_3d.gd" id="4_2a20n"]
+[ext_resource type="Script" uid="uid://xwmekpoehgl" path="res://scr/npc.gd" id="4_2a20n"]
 [ext_resource type="Texture2D" uid="uid://b6edbsoisu7rs" path="res://Assets/WELcum.png" id="4_ymtjv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymtjv"]
@@ -29,24 +29,25 @@ omni_range = 82.1
 
 [node name="Text" type="Sprite3D" parent="." unique_id=1352586931]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.639999, 5.684681, -63.84162)
+visible = false
 texture = ExtResource("4_ymtjv")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2048644377]
+[node name="NPC" type="CharacterBody3D" parent="." unique_id=2048644377]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.4239225)
 script = ExtResource("4_2a20n")
 
-[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D" unique_id=464003680]
+[node name="Sprite3D" type="Sprite3D" parent="NPC" unique_id=464003680]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7011762, 0.016252518)
 pixel_size = 0.03
 texture = ExtResource("2_c77c4")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1851376343]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPC" unique_id=1851376343]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.090667725, 2.708435, 0.0011291504)
 shape = SubResource("BoxShape3D_ymtjv")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="CharacterBody3D" unique_id=647439953]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="NPC" unique_id=647439953]
 
-[node name="Timer" type="Timer" parent="CharacterBody3D" unique_id=2051723912]
+[node name="Timer" type="Timer" parent="NPC" unique_id=2051723912]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=114359762]
 navigation_mesh = SubResource("NavigationMesh_0e82a")
