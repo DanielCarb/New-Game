@@ -1,40 +1,48 @@
 extends CharacterBody3D
 
-@export var speed = 1.5
-@onready var nav_agent: NavigationAgent3D = $"../NavigationAgent3D"
-@onready var timer: Timer = $"../Timer"
+@export var speed = 5
+@export var idle_duration = 3.0
+@export var walk_area_size = 40.0
 
+@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var timer: Timer = $Timer
 
-enum State {IDLE, WALKING}
+enum State { IDLE, WALKING }
 var state = State.IDLE
-var walking_duration = 5
-var idle_duration = 5
 
 func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 	timer.start(idle_duration)
-	
-func _on_timer_timeout():
-	match state:
-		State.IDLE:
-			var random_target = Vector3 (randf_range (-10, 10), 0, randf_range(-10, 10))
-			nav_agent.target_position= random_target
-			state = State.WALKING
-			timer.start(idle_duration)
-		State.WALKING:
-			state = State. IDLE
-func process(delta: float) -> void:
-	if state== State.WALKING:
+
+func _on_timer_timeout() -> void:
+	# Timer only fires when IDLE — pick a new destination and start walking
+	var random_target = Vector3(
+		randf_range(-walk_area_size, walk_area_size),
+		0,
+		randf_range(-walk_area_size, walk_area_size)
+	)
+	nav_agent.target_position = random_target
+	state = State.WALKING
+
+func _physics_process(delta: float) -> void:
+	if state == State.WALKING:
 		if nav_agent.is_navigation_finished():
-			state= State.IDLE
+			# Reached the target — go idle and start the rest timer
+			state = State.IDLE
+			velocity = Vector3.ZERO
 			timer.start(idle_duration)
 		else:
-			move_toward_target(speed)
-func move_toward_target (move_speed):
-	var next_position = nav_agent.get_next_path_position()
-	var direction = (next_position- global_transform.origin).normalized()
-	var velocity = direction * move_speed
+			_move_toward_target()
+
+func _move_toward_target() -> void:
+	var next_pos = nav_agent.get_next_path_position()
+	var direction = (next_pos - global_position).normalized()
+
+	# Assign to self.velocity so move_and_slide() uses it
+	velocity = direction * speed
 	move_and_slide()
-	if direction.length()>0:
-		var target_rotation = global_transform.looking_at (next_position). basis
-		global_transform. basis = global_transform.basis.slerp(target_rotation, 0.1)
+
+	# Rotate to face movement direction (guard against zero-length direction)
+	if direction.length() > 0.01:
+		var target_basis = global_transform.looking_at(next_pos, Vector3.UP).basis
+		global_transform.basis = global_transform.basis.slerp(target_basis, 0.1)
