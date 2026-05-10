@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://xb5n4088hw6r" path="res://Assets/icon.svg" id="2_c77c4"]
 [ext_resource type="Script" uid="uid://xwmekpoehgl" path="res://scr/npc.gd" id="4_2a20n"]
 [ext_resource type="Texture2D" uid="uid://b6edbsoisu7rs" path="res://Assets/WELcum.png" id="4_ymtjv"]
+[ext_resource type="PackedScene" uid="uid://byb27jge0lbce" path="res://Scenes/Spatula.tscn" id="6_2a20n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ymtjv"]
 size = Vector3(3.802185, 3.9088135, 0.2518921)
@@ -56,3 +57,6 @@ navigation_mesh = SubResource("NavigationMesh_0e82a")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08949995, -0.75351256, -0.113363266)
 use_collision = true
 size = Vector3(50, 1.2805, 50)
+
+[node name="Spatula" parent="." unique_id=1816019571 instance=ExtResource("6_2a20n")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.5948199, -3.8526902)

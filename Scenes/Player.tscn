@@ -14,8 +14,15 @@ mesh = SubResource("CapsuleMesh_0rwas")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=250822559]
 shape = SubResource("CapsuleShape3D_xhfnw")
+debug_color = Color(0.9970785, 0, 0.18316555, 0.41960785)
 
 [node name="Head" type="Node3D" parent="." unique_id=83432251]
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=1403185263]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6371391, -0.18713677)
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=2015866886]
+target_position = Vector3(0, 0.1, -5)
+
+[node name="CarryObjectMarker" type="Marker3D" parent="Head" unique_id=1026033262]
+transform = Transform3D(0.01, 0, 0, 0, 0.008745774, 0.0048488593, 0, -0.0048488593, 0.008745774, 0.4425159, -0.14039785, -0.975338)
