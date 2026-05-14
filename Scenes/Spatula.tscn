@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://byb27jge0lbce"]
 
 [ext_resource type="PackedScene" uid="uid://b1dyp1ou0cedq" path="res://Assets/spatula_spongebob/scene.gltf" id="1_3mrcl"]
-[ext_resource type="Script" uid="uid://drr0ij65n3col" path="res://Scenes/spatula.gd" id="1_7q8ln"]
+[ext_resource type="Script" uid="uid://drr0ij65n3col" path="res://scr/spatula.gd" id="1_7q8ln"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kiorb"]
 size = Vector3(27.073963, 80.067505, 0.001)
 
 [node name="Spatula" type="CharacterBody3D" unique_id=1816019571]
+collision_layer = 2
 script = ExtResource("1_7q8ln")
 
 [node name="Sketchfab_Scene" parent="." unique_id=104712323 instance=ExtResource("1_3mrcl")]

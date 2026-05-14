@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c5jy2pxix2rsf" path="res://Assets/mcdonalds/scene.gltf" id="1_4fne4"]
 [ext_resource type="PackedScene" uid="uid://c643s5glonng8" path="res://Scenes/Player.tscn" id="2_l7ej3"]
 [ext_resource type="PackedScene" uid="uid://byb27jge0lbce" path="res://Scenes/Spatula.tscn" id="3_hmhvt"]
+[ext_resource type="PackedScene" uid="uid://d0byhx54pyh0m" path="res://Assets/crt_tv/scene.gltf" id="4_aqwgh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l7ej3"]
 size = Vector3(29.164673, 1, 25.91504)
@@ -17,7 +18,7 @@ size = Vector3(8.305405, 13.1701355, 1)
 size = Vector3(1, 11.799866, 9.199219)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q3ni1"]
-size = Vector3(1.0327148, 4.612274, 20.238861)
+size = Vector3(1.0327148, 4.3173676, 20.238861)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fdq0p"]
 size = Vector3(2.1543274, 5.536133, 2.47995)
@@ -56,7 +57,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9026402, 4.978119, -22.1067
 shape = SubResource("BoxShape3D_x2c10")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="Collisions" unique_id=761096013]
-transform = Transform3D(0.7422215, 0, 0.67015463, 0, 1, 0, -0.67015463, 0, 0.7422215, 8.695027, 1.8061371, -12.989648)
+transform = Transform3D(0.7422215, 0, 0.67015463, 0, 1, 0, -0.67015463, 0, 0.7422215, 8.695027, 1.6586838, -12.989648)
 shape = SubResource("BoxShape3D_q3ni1")
 
 [node name="CollisionShape3D7" type="CollisionShape3D" parent="Collisions" unique_id=1974431487]
@@ -72,4 +73,12 @@ transform = Transform3D(0.017277887, 0, 0.99985075, 0, 1, 0, -0.99985075, 0, 0.0
 shape = SubResource("BoxShape3D_nl7wh")
 
 [node name="Spatula" parent="." unique_id=1816019571 instance=ExtResource("3_hmhvt")]
-transform = Transform3D(0.014142135, -0.014142135, 6.181724e-10, 0, -8.7422775e-10, -0.02, 0.014142135, 0.014142135, -6.181724e-10, 7.3725643, 4.098445, -15.494674)
+transform = Transform3D(0.014142135, -0.014142135, 6.181724e-10, 0, -8.7422775e-10, -0.02, 0.014142135, 0.014142135, -6.181724e-10, 7.3725643, 3.8755789, -15.494674)
+
+[node name="Sketchfab_Scene2" parent="." unique_id=1613183573 instance=ExtResource("4_aqwgh")]
+transform = Transform3D(-4.999383, 0, -0.078537375, 0, 5, 0, 0.078537375, 0, -4.999383, 20.086304, 3.8490095, -19.17111)
+
+[node name="Light" type="DirectionalLight3D" parent="." unique_id=562613946]
+transform = Transform3D(1, 0, 0, 0, 0.03141073, 0.9995066, 0, -0.9995066, 0.03141073, 16.582218, 11.6617155, -14.460725)
+layers = 3
+light_energy = 1.379

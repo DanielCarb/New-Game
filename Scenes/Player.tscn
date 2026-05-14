@@ -6,6 +6,10 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xhfnw"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_rpqav"]
+height = 3.0
+radius = 0.595
+
 [node name="Player" type="CharacterBody3D" unique_id=87976046]
 script = ExtResource("1_xhfnw")
 
@@ -21,8 +25,12 @@ debug_color = Color(0.9970785, 0, 0.18316555, 0.41960785)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=1403185263]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6371391, -0.18713677)
 
-[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=2015866886]
-target_position = Vector3(0, 0.1, -5)
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Head/Camera3D" unique_id=1151785989]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_rpqav")
+target_position = Vector3(0, -1.775, 0.245)
+collision_mask = 2
+debug_shape_custom_color = Color(1, 0, 0, 1)
 
-[node name="CarryObjectMarker" type="Marker3D" parent="Head" unique_id=1026033262]
-transform = Transform3D(0.01, 0, 0, 0, 0.008745774, 0.0048488593, 0, -0.0048488593, 0.008745774, 0.4425159, -0.14039785, -0.975338)
+[node name="CarryObjectMarker" type="Marker3D" parent="Head/Camera3D" unique_id=1026033262]
+transform = Transform3D(0.01, 0, 0, 0, 0.008745774, 0.0048488593, 0, -0.0048488593, 0.008745774, 0.7790183, -1.3188257, -1.2384753)
